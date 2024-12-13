@@ -39,7 +39,7 @@ get.phasefromtrack<-function(datetime,depth,geodates,geolons,geolats,plotit=F,ti
   # 
   # #Only days with position estimates
   # arch=arch[!is.na(arch$lon),]
-  
+  if (!'maptools' %in% installed.packages()[,1]) devtools::install_version("maptools", version = "1.1-8")
   require(maptools) 
   
   sunrise<-crepuscule(crds=cbind(geo2$mptlon,geo2$mptlat),dateTime=geo2$date,direction='dawn',solarDep=3,POSIXct.out=T)
