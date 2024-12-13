@@ -1,0 +1,11 @@
+Package: patudo
+Title: Support functions for analyses of bigeye archival tag data
+Version: 0.0.0.9000
+Authors@R: 
+    person("Curro", "Abascal", , "francisco.abascal@ieo.csic.es", role = c("aut", "cre"))
+Description: A bunch of functions for BET data analysis.
+License: `use_mit_license()`
+Encoding: UTF-8
+Imports: RNetCDF,data.table,plyr,maptools,zoo,fields
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
