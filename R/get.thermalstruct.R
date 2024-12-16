@@ -37,11 +37,13 @@ get.thermalstruct<-function(datetime,depth,exttemp, isoclines=c(18,20)){
     gradtemp=c(rep(NaN,times=depthlag/2),diff(smoothtemp,lag=depthlag),rep(NaN,times=depthlag/2))
     # depth=ifelse(which.min(gradtemp)==rev(which(!is.na(gradtemp)))[1],NA,which.min(gradtemp)-1)
     # if (length(depth)==0) depth=NA
-    isodepths=rbind(isodepths,sapply(isoclines,tempfun))
+    isodepths=rbind(isodepths,c(k,sapply(isoclines,tempfun)))
     }
   }
   #Some days, it cannot be estimated because the fish stays in the surface. Do some interpolation.
   isodepths=na.approx(isodepths)
-  colnames(isodepths)=paste0('depth',isoclines)
+  
+  colnames(isodepths)[2:3]=paste0('depth',isoclines)
+  isodepths=data.frame(date=uniquedates[isodepths[,1]],isodepths[,-1])
   return(isodepths)
 }

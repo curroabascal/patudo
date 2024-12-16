@@ -3,11 +3,11 @@
 \name{checkfiles}
 \alias{checkfiles}
 \title{This is a function to check the rdata with the archival data has been downloaded.
-Git LFS is tricky}
+After some issues with LFS, I put it in saco...}
 \usage{
 checkfiles()
 }
 \description{
 This is a function to check the rdata with the archival data has been downloaded.
-Git LFS is tricky
+After some issues with LFS, I put it in saco...
 }
