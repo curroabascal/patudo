@@ -34,6 +34,11 @@ get.phasefromtrack<-function(datetime,depth,geodates,geolons,geolats,plotit=F,ti
   geo2=aggregate(cbind(mptlon,mptlat)~date,data=geo,FUN=mean)
   geo2$date=as.POSIXct(geo2$date,format='%d/%m/%Y',tz='UTC')
   
+  #There are gaps in the geolocation estimates
+  lons=approx(geo2$date,geo2$mptlon,xout=seq.POSIXt(min(geo2$date),max(geo2$date),86400))
+  lats=approx(geo2$date,geo2$mptlat,xout=seq.POSIXt(min(geo2$date),max(geo2$date),86400))
+  geo2=data.frame(date=lons$x,mptlon=lons$y,mptlat=lats$y)
+  
   # arch$lon=geo2$mptlon[match(as.character(arch$date),as.character(geo2$date))]
   # arch$lat=geo2$mptlat[match(as.character(arch$date),as.character(geo2$date))]
   # 
